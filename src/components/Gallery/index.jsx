@@ -54,7 +54,6 @@ const Gallery = () => {
 
   return (
     <>
-      <h1>GALLERY</h1>
       <div
         className={
           modal ? `${styles.modalPic} ${styles.open}` : `${styles.modalPic}`
