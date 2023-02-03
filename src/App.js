@@ -3,56 +3,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import './App.scss';
 import Gallery from './components/Gallery';
+import React from 'react';
+import Navbar from './components/Navbar';
+import Portfolio from './components/Portfolio';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <div className="header container">
-        <nav className="navbar navbar-expand-lg bg-body-tertiary bg-light">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#">
-              LOGO
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
-                    Портфолио
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Контакты
-                  </a>
-                </li>
-              </ul>
-              <form className="d-flex" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Получить фото
-                </button>
-              </form>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <Navbar />
 
       <div className="slider">
         <div className="container">
@@ -127,39 +86,9 @@ function App() {
         </div>
       </div>
 
-      <div className="portfolio">
-        <div className="container">
-          <div className="wrapper">
-            <h2 className="title text-center m-5">PORTFOLIO</h2>
-            <Gallery />
-          </div>
-        </div>
-      </div>
+      <Portfolio />
 
-      <div className="contacts">
-        <div className="container">
-          <div className="wrapper">
-            <h2 className="title text-center m-5">CONTACTS</h2>
-            <div className="row">
-              <div className="col-12 col-md-6">
-                <ul className="contacts-list">
-                  <li>TELEGRAM</li>
-                  <li>INSTAGRAM</li>
-                  <li>VK</li>
-                  <li>GOOGLE</li>
-                </ul>
-              </div>
-              <div className="col-12 col-md-6">
-                <iframe
-                  title="yaMap"
-                  src="https://yandex.ru/map-widget/v1/?um=constructor%3A39520befb4e939904b82acc27129ead06fa18cb118b6e514da1f8ce75736c2dd&amp;source=constructor"
-                  width="90%"
-                  height="400"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }
