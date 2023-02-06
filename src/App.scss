@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   background-color: #15181a;
+
+  font-family: 'Roboto', sans-serif;
 }
 
 .nav-link {
@@ -20,4 +22,8 @@
   color: #ffffff;
   list-style: none;
   font-size: 24px;
+}
+
+hr {
+  border: 1px solid #939393;
 }

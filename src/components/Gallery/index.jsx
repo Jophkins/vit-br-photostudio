@@ -55,6 +55,7 @@ const Gallery = () => {
   return (
     <>
       <div
+        onClick={() => setModal(false)}
         className={
           modal ? `${styles.modalPic} ${styles.open}` : `${styles.modalPic}`
         }>
