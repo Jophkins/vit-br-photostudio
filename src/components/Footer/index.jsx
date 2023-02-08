@@ -8,13 +8,13 @@ const Footer = () => {
       <div className="container">
         <div className="wrapper">
           <div className="row align-items-center">
-            <div className="col-md-4 col-12">
+            <div className="col-md-4 col-12 mb-4">
               <div className={styles.phone}>
                 <a href="tel:99999999999">+9 (999) 999 99 99</a>
                 <a href="tel:99999999999">+9 (999) 999 99 99</a>
               </div>
             </div>
-            <div className="col-md-4 col-12">
+            <div className="col-md-4 col-12 mb-4">
               <div className={styles.social}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-            <div className="col-md-4 col-12">
+            <div className="col-md-4 col-12 mb-4">
               <div className={styles.social}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
