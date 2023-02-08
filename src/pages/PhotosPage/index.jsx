@@ -23,12 +23,15 @@ const PhotosPage = () => {
             Для получения фото введите вашу фамилию и нажмите кнопку загрузить
           </h2>
           <div className="row justify-content-center">
-            <div className="col-6 mt-4">
-              <form className="d-flex" role="search" onSubmit={submitHandler}>
+            <div className="col-8 mt-4">
+              <form
+                className="d-flex flex-lg-row flex-column"
+                role="search"
+                onSubmit={submitHandler}>
                 <input
                   onChange={inputHandler}
                   value={inputValue}
-                  className="form-control me-2"
+                  className="form-control me-2 mb-2"
                   type="search"
                   placeholder="Фамилия"
                   aria-label="Search"
