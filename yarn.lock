@@ -7507,6 +7507,13 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-input-hints@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-input-hints/-/react-input-hints-3.0.0.tgz#5188610ec7a9deb4ddb394b2212af1a43719dd05"
+  integrity sha512-+jxvvGeqrnhyleE4ujRSFx7losloMJ3j7QD7dPj3rhT95cwuq2ZOAcVsEyi8I8yXwDMzT4C/JBmBTQ0F/B6rvQ==
+  dependencies:
+    react-typewriting "~1"
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -7601,6 +7608,11 @@ react-spinners@^0.13.8:
   version "0.13.8"
   resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.13.8.tgz#5262571be0f745d86bbd49a1e6b49f9f9cb19acc"
   integrity sha512-3e+k56lUkPj0vb5NDXPVFAOkPC//XyhKPJjvcGjyMNPWsBKpplfeyialP74G7H7+It7KzhtET+MvGqbKgAqpZA==
+
+react-typewriting@~1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-typewriting/-/react-typewriting-1.1.1.tgz#0cfb28f58720a0be44a319113896cd487d4248a1"
+  integrity sha512-DrbV5yKnMtwLNikd7K6kExhB2lWTrfrVFMtDmW5GiGI4cMfQStDQeFtB+4GCIkAR2sUTHLM42umF8DhumviUbg==
 
 react@^18.2.0:
   version "18.2.0"
