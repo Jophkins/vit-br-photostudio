@@ -4,6 +4,7 @@ import InputHints from 'react-input-hints';
 import styles from './PhotosPage.module.scss';
 import axios from 'axios';
 import UserPhotos from '../../components/UserPhotos';
+import { PropagateLoader } from 'react-spinners';
 
 const PhotosPage = () => {
   const [inputValue, setInputValue] = React.useState('');
@@ -52,6 +53,7 @@ const PhotosPage = () => {
         setErrorAfterLoad('');
       })
       .catch((error) => {
+        setPhotos([]);
         setIsLoading(false);
         setErrorAfterLoad(error.response.status);
       });
@@ -92,7 +94,12 @@ const PhotosPage = () => {
                 </button>
               </form>
             </div>
-            {errorAfterLoad ? (
+            {isLoading ? (
+              <div className="col-12 my-5">
+                <h4 className="text-white my-4">Поиск фото</h4>
+                <PropagateLoader color="#198754" />
+              </div>
+            ) : errorAfterLoad ? (
               <div className="col-12 text-bg-warning my-5 p-5">
                 {renderSwitch(errorAfterLoad)}
               </div>

@@ -1,9 +1,7 @@
 import React from 'react';
-import { PropagateLoader } from 'react-spinners';
-import styles from './UserPhotos.module.scss';
 import axios from 'axios';
 
-const UserPhotos = ({ input, photos, isLoading, setIsLoading }) => {
+const UserPhotos = ({ input, photos }) => {
   const downloadPhoto = () => {
     axios
       .get('https://cloud-api.yandex.net/v1/disk/public/resources/download', {
@@ -17,38 +15,22 @@ const UserPhotos = ({ input, photos, isLoading, setIsLoading }) => {
       });
   };
 
-  return isLoading ? (
-    <div className={`${styles.spinner} col-12`}>
-      <h4 className="text-white my-4">Поиск фото</h4>
-      <PropagateLoader color="#198754" />
-    </div>
-  ) : (
+  return photos.length !== 0 ? (
     <div className="userPhotos">
-      {/*<div className="col-12">*/}
-      {/*  <button*/}
-      {/*    className="btn btn-success"*/}
-      {/*    onClick={() =>*/}
-      {/*      console.log(*/}
-      {/*        photos.map((item) => {*/}
-      {/*          return {*/}
-      {/*            id: item.resource_id,*/}
-      {/*            name: item.name,*/}
-      {/*            file: item.file,*/}
-      {/*            preview: item.preview,*/}
-      {/*          };*/}
-      {/*        }),*/}
-      {/*      )*/}
-      {/*    }>*/}
-      {/*    Check Photos*/}
-      {/*  </button>*/}
-      {/*</div>*/}
+      <div className="col-12">
+        <button
+          className="btn btn-success"
+          onClick={() => console.log(process.env.REACT_APP_PHOTOS_PUBLIC_KEY)}>
+          Check Photos
+        </button>
+      </div>
       <div className="col-12">
         <h3 className="my-4 text-white">Фотографии найдены</h3>
         <p className="text-white">Предпросмотр (5шт)</p>
         {photos.map((item) => {
           return (
             <img
-              className={`${styles.userPhotos} img-fluid`}
+              className="img-fluid p-1"
               key={item.resource_id}
               src={item.preview}
               alt=""
@@ -61,6 +43,14 @@ const UserPhotos = ({ input, photos, isLoading, setIsLoading }) => {
           Скачать все фото
         </button>
       </div>
+    </div>
+  ) : (
+    <div className="col-12">
+      <button
+        className="btn btn-success"
+        onClick={() => console.log(process.env.REACT_APP_PHOTOS_PUBLIC_KEY)}>
+        Check Photos
+      </button>
     </div>
   );
 };
