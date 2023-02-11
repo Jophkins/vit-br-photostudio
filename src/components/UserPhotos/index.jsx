@@ -16,17 +16,12 @@ const UserPhotos = ({ input, photos }) => {
   };
 
   return photos.length !== 0 ? (
-    <div className="userPhotos">
-      <div className="col-12">
-        <button
-          className="btn btn-success"
-          onClick={() => console.log(process.env.REACT_APP_PHOTOS_PUBLIC_KEY)}>
-          Check Photos
-        </button>
-      </div>
-      <div className="col-12">
-        <h3 className="my-4 text-white">Фотографии найдены</h3>
-        <p className="text-white">Предпросмотр (5шт)</p>
+    <div className="userPhotos mt-4">
+      <div className="col-12 my-2">
+        <h4 className="my-4 text-white text-bg-success p-2">
+          Фотографии найдены
+        </h4>
+        <p className="text-white mt-4">Предпросмотр</p>
         {photos.map((item) => {
           return (
             <img
@@ -38,21 +33,13 @@ const UserPhotos = ({ input, photos }) => {
           );
         })}
       </div>
-      <div className="col-8 offset-md-2 mt-4">
-        <button onClick={downloadPhoto} className="btn btn-primary">
+      <div className="col-12 col-md-8 offset-md-2 mt-4">
+        <button onClick={downloadPhoto} className="btn btn-outline-info">
           Скачать все фото
         </button>
       </div>
     </div>
-  ) : (
-    <div className="col-12">
-      <button
-        className="btn btn-success"
-        onClick={() => console.log(process.env.REACT_APP_PHOTOS_PUBLIC_KEY)}>
-        Check Photos
-      </button>
-    </div>
-  );
+  ) : null;
 };
 
 export default UserPhotos;
