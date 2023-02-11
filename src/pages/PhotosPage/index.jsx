@@ -13,6 +13,10 @@ const PhotosPage = () => {
   const [errorAfterLoad, setErrorAfterLoad] = React.useState('');
   const [photos, setPhotos] = React.useState([]);
 
+  const inputCapitalize = () => {
+    return inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+  };
+
   const inputHandler = (event) => {
     setInputValue(event.target.value);
   };
@@ -20,7 +24,7 @@ const PhotosPage = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     getPhotos();
-    setInputToProps(inputValue);
+    setInputToProps(inputCapitalize());
     setInputValue('');
   };
 
@@ -43,7 +47,7 @@ const PhotosPage = () => {
       .get('https://cloud-api.yandex.net/v1/disk/public/resources', {
         params: {
           public_key: process.env.REACT_APP_PHOTOS_PUBLIC_KEY,
-          path: `/${inputValue}`,
+          path: `/${inputCapitalize()}`,
           limit: 5,
         },
       })
@@ -80,11 +84,7 @@ const PhotosPage = () => {
                   type="search"
                   aria-label="Search"
                   disabled={isLoading}
-                  placeholders={[
-                    'Введите фамилию с большой буквы',
-                    'Например: Иванов',
-                    'Антонова',
-                  ]}
+                  placeholders={['Иванова', 'Лебедева', 'Антонова']}
                 />
                 <button
                   className="btn btn-outline-success align-self-baseline"
