@@ -14,13 +14,19 @@ const Gallery = ({ photosToRender }) => {
   return (
     <>
       <div
-        onClick={() => setModal(false)}
+        onClick={() => {
+          setModal(false);
+          setTempImgSrc('');
+        }}
         className={
           modal ? `${styles.modalPic} ${styles.open}` : `${styles.modalPic}`
         }>
         <img src={tempImgSrc} alt="" />
         <svg
-          onClick={() => setModal(false)}
+          onClick={() => {
+            setModal(false);
+            setTempImgSrc('');
+          }}
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
@@ -35,7 +41,7 @@ const Gallery = ({ photosToRender }) => {
           return (
             <div
               className={styles.pics}
-              key={item.id}
+              key={item.resource_id}
               onClick={() => getImg(item.file)}>
               <img src={item.preview} alt="" />
             </div>
