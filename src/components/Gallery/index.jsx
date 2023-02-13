@@ -1,26 +1,43 @@
 import React from 'react';
 
 import styles from './Gallery.module.scss';
+import axios from 'axios';
+import { ClipLoader } from 'react-spinners';
 
 const Gallery = ({ photosToRender }) => {
   const [modal, setModal] = React.useState(false);
   const [tempImgSrc, setTempImgSrc] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const getImg = (imgSrc) => {
-    setTempImgSrc(imgSrc);
     setModal(true);
+    setIsLoading(true);
+    axios.get(imgSrc).then((response) => {
+      setTempImgSrc(response.config.url);
+      setIsLoading(false);
+    });
   };
 
   return (
     <>
       <div
-        onClick={() => setModal(false)}
+        onClick={() => {
+          setModal(false);
+          setTempImgSrc('');
+        }}
         className={
           modal ? `${styles.modalPic} ${styles.open}` : `${styles.modalPic}`
         }>
-        <img src={tempImgSrc} alt="" />
+        {isLoading ? (
+          <ClipLoader color="#198754" />
+        ) : (
+          <img src={tempImgSrc} alt="" />
+        )}
         <svg
-          onClick={() => setModal(false)}
+          onClick={() => {
+            setModal(false);
+            setTempImgSrc('');
+          }}
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
@@ -35,7 +52,7 @@ const Gallery = ({ photosToRender }) => {
           return (
             <div
               className={styles.pics}
-              key={item.id}
+              key={item.resource_id}
               onClick={() => getImg(item.file)}>
               <img src={item.preview} alt="" />
             </div>
