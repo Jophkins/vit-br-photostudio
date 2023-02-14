@@ -2,6 +2,7 @@ import React from 'react';
 import InputHints from 'react-input-hints';
 
 import styles from './PhotosPage.module.scss';
+
 import axios from 'axios';
 import UserPhotos from '../../components/UserPhotos';
 import { PropagateLoader } from 'react-spinners';
@@ -48,7 +49,6 @@ const PhotosPage = () => {
         params: {
           public_key: process.env.REACT_APP_PHOTOS_PUBLIC_KEY,
           path: `/${inputCapitalize()}`,
-          limit: 5,
         },
       })
       .then((response) => {
@@ -68,7 +68,7 @@ const PhotosPage = () => {
       <div className="container">
         <div className="wrapper">
           <h2>
-            Для получения фото введите вашу фамилию и нажмите кнопку загрузить
+            Для получения фото введите ваши инициалы "Фамилия И.О." и нажмите кнопку загрузить
           </h2>
           <div className="row justify-content-md-center">
             <div className="col-12 col-md-8 mt-4">
@@ -84,7 +84,8 @@ const PhotosPage = () => {
                   type="search"
                   aria-label="Search"
                   disabled={isLoading}
-                  placeholders={['Иванова', 'Лебедева', 'Антонова']}
+                  placeholders={['Иванова Ю.Г.', 'Лебедева А.Р.', 'Антонова С.Н.']}
+                  maxLength="30"
                 />
                 <button
                   className="btn btn-outline-success align-self-baseline"
@@ -100,9 +101,7 @@ const PhotosPage = () => {
                 <PropagateLoader color="#198754" />
               </div>
             ) : errorAfterLoad ? (
-              <div className="col-12 text-bg-warning my-5 p-5">
-                {renderSwitch(errorAfterLoad)}
-              </div>
+              <div className="col-12 text-bg-warning my-5 p-5">{renderSwitch(errorAfterLoad)}</div>
             ) : (
               <UserPhotos
                 input={inputToProps}
