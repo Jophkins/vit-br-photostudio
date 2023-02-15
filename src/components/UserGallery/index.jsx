@@ -11,6 +11,9 @@ const UserGallery = ({ photos }) => {
 
   const modalRef = React.useRef(null);
 
+  let touchStartX = 0;
+  let touchEndX = 0;
+
   const openModal = (image) => {
     setModal(true);
     setSelectedImage(image);
@@ -31,17 +34,23 @@ const UserGallery = ({ photos }) => {
     setSelectedImage(photos[nextIndex]);
   };
 
-  const handleTouchStart = (event) => {
-    modalRef.current.startX = event.touches[0].clientX;
+  const checkDirection = () => {
+    touchEndX < touchStartX ? nextImage() : previousImage();
   };
 
-  const handleTouchEnd = (event) => {
-    modalRef.current.endX = event.changedTouches[0].clientX;
-    const difference = modalRef.current.endX - modalRef.current.startX;
-    if (difference > 0) {
-      previousImage();
-    } else {
-      nextImage();
+  const touchStart = (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+  };
+
+  const touchEnd = (event) => {
+    touchEndX = event.changedTouches[0].screenX;
+    checkDirection();
+  };
+
+  const closeModal = (event) => {
+    if (event.target.className === `${styles.modalPic} ${styles.open}`) {
+      setModal(false);
+      setSelectedImage(null);
     }
   };
 
@@ -49,9 +58,7 @@ const UserGallery = ({ photos }) => {
     <>
       <div
         className={modal ? `${styles.modalPic} ${styles.open}` : styles.modalPic}
-        ref={modalRef}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}>
+        onClick={closeModal}>
         {isModalLoading && (
           <div className={styles.loader}>
             <ClipLoader color="#198754" />
@@ -60,13 +67,19 @@ const UserGallery = ({ photos }) => {
         {selectedImage && (
           <div>
             <img
+              ref={modalRef}
+              onTouchStart={touchStart}
+              onTouchEnd={touchEnd}
               className="img-fluid"
               src={selectedImage.file}
               style={{ display: isModalLoading ? 'none' : 'block' }}
               onLoad={() => setIsModalLoading(false)}
               alt=""
             />
-            <a href={selectedImage.file} style={{ display: isModalLoading ? 'none' : 'block' }}>
+            <a
+              className={`${styles.downloadLink} btn btn-outline-info`}
+              href={selectedImage.file}
+              style={{ display: isModalLoading ? 'none' : 'block' }}>
               Скачать оригинал
             </a>
             <svg
