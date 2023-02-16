@@ -19,7 +19,7 @@ const UserPhotos = ({ input, photos }) => {
   return photos.length !== 0 ? (
     <div className="userPhotos mt-4">
       <div className="col-12 my-2">
-        <h4 className="my-4 text-white text-bg-success p-2">Фотографии найдены</h4>
+        <h4 className="my-4 text-white text-bg-success p-2">Найдено {photos.length} фото</h4>
       </div>
       <div className="col-12 col-md-8 offset-md-2 my-4">
         <button onClick={downloadPhoto} className="btn btn-outline-info p-4">

@@ -127,10 +127,12 @@ const UserGallery = ({ photos }) => {
       <div className="row">
         {photos.map((item) => {
           return (
-            <div className="col-md-2 col-6 my-2" key={item.resource_id}>
+            <div
+              className="col-md-2 col-6 my-2 d-flex justify-content-center"
+              key={item.resource_id}>
               {isLoading && <ClipLoader color="#198754" />}
               <img
-                className="img-thumbnail p-1"
+                className={`${styles.imgPreview} img-fluid p-1`}
                 style={{ display: isLoading ? 'none' : 'block' }}
                 onLoad={() => setIsLoading(false)}
                 onClick={() => openModal(item)}

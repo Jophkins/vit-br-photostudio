@@ -49,6 +49,7 @@ const PhotosPage = () => {
         params: {
           public_key: process.env.REACT_APP_PHOTOS_PUBLIC_KEY,
           path: `/${inputCapitalize()}`,
+          limit: -1,
         },
       })
       .then((response) => {
