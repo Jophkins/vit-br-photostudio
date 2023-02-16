@@ -6,12 +6,14 @@ import PhotosPage from '../../pages/PhotosPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import PortfolioPage from '../../pages/PortfolioPage';
 import ContactsPage from '../../pages/ContactsPage';
+import RequestPhoto from '../../pages/RequestPhoto';
 
 const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/events" element={<EventsPage />} />
+      <Route path="/request" element={<RequestPhoto />} />
       <Route path="/portfolio" element={<PortfolioPage />} />
       <Route path="/contacts" element={<ContactsPage />} />
       <Route path="/photos" element={<PhotosPage />} />

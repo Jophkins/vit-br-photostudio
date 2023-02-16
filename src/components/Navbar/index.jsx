@@ -26,6 +26,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" to="/request">
+                Заказ фото
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/portfolio">
                 Портфолио
               </Link>
@@ -38,9 +43,7 @@ const Navbar = () => {
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link
-                className="nav-link btn btn-outline-success p-3"
-                to="/photos">
+              <Link className="nav-link btn btn-outline-success p-3" to="/photos">
                 Получить фото
               </Link>
             </li>
