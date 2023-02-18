@@ -1,0 +1,29 @@
+.requestPhotos {
+  margin: 60px auto;
+  color: #FFFFFF;
+}
+
+.formWrapper {
+  border-radius: 8px;
+  padding: 10px 30px;
+
+  form {
+    gap: 20px;
+
+    input, select {
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #273133;
+      color: #FFFFFF;
+
+      &:focus {
+        //border-color: #198754;
+        outline: none;
+      }
+      &:invalid {
+        border-color: #FFFFFF;
+      }
+    }
+  }
+}
