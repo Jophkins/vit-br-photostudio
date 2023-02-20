@@ -15,12 +15,18 @@ const Header = () => {
             </div>
             <div className="col-md-6 col-12 d-flex justify-content-center">
               <div className={styles.rightSide}>
-                <h1 className={styles.title}>Иван Иванов</h1>
+                <h1 className={styles.title}>Виталий Мозговой</h1>
                 <div className={styles.desc}>спортивный фотограф</div>
-                <div className={styles.desc1}>(Россия, Казахстан, Грузия)</div>
+                {/*<div className={styles.desc1}>(Россия, Казахстан, Грузия)</div>*/}
                 <div className={styles.phone}>
-                  <a href="tel:99999999999">+9 (999) 999 99 99</a>
-                  <a href="tel:99999999999">+9 (999) 999 99 99</a>
+                  <a href="tel:79258371194">+7 (925) 837 11 94</a>
+                  <a
+                    style={{ fontSize: '20px', color: '#008069' }}
+                    href="https://wa.me/79258371194"
+                    target="_blank"
+                    rel="noreferrer">
+                    (whatsApp)
+                  </a>
                 </div>
               </div>
             </div>

@@ -32,7 +32,7 @@ const PhotosPage = () => {
   const renderSwitch = (param) => {
     switch (+param) {
       case 404:
-        return 'Фотографии не найдены или еще не загружены';
+        return `Фотографии не найдены или еще не загружены`;
       case 400:
         return 'Некорректные данные';
       case 503:

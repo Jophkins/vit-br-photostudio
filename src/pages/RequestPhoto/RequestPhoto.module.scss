@@ -1,6 +1,13 @@
 .requestPhotos {
   margin: 60px auto;
   color: #FFFFFF;
+
+  .title {
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    border: 2px solid #0DCAF0;
+    border-radius: 8px;
+  }
 }
 
 .formWrapper {
@@ -10,7 +17,7 @@
   form {
     gap: 20px;
 
-    input, select {
+    input, select, textarea {
       border: 1px solid transparent;
       border-radius: 8px;
       padding: 10px;
