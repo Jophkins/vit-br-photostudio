@@ -1,52 +1,59 @@
 import React from 'react';
+import InputMask from 'react-input-mask';
 
 import styles from './RequestPhoto.module.scss';
+import SendEmail from '../../API';
 
 const RequestPhoto = () => {
-  const [inputState, setInputState] = React.useState({
-    name: '',
-    date: '',
-    city: '',
-    birth: '',
-    tournament: '',
-    category: '',
-    email: '',
-    phone: '',
-    comment: '',
-    photo: '',
-  });
+  const [fullName, setFullName] = React.useState('');
+  const [date, setDate] = React.useState('');
+  const [city, setCity] = React.useState('');
+  const [birth, setBirth] = React.useState('');
+  const [tournament, setTournament] = React.useState('');
+  const [category, setCategory] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [comment, setComment] = React.useState('');
+  const [btnLoading, setBtnLoading] = React.useState(false);
+  const [send, setSend] = React.useState();
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setInputState((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
-  };
+  // const checker = (event) => {
+  //   event.preventDefault();
+  //   event.target.reset();
+  // };
 
-  const checker = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputState);
-    setInputState({
-      name: '',
-      date: '',
-      city: '',
-      birth: '',
-      tournament: '',
-      category: '',
-      email: '',
-      phone: '',
-      comment: '',
-      photo: '',
+    setBtnLoading(true);
+    SendEmail({
+      fullName,
+      date,
+      city,
+      birth,
+      tournament,
+      category,
+      email,
+      phone,
+      comment,
+      setSend,
+    }).then(() => {
+      setBtnLoading(false);
+      setFullName('');
+      setDate('');
+      setCity('');
+      setBirth('');
+      setTournament('');
+      setCategory('');
+      setEmail('');
+      setPhone('');
+      setComment('');
+      console.log(send);
     });
-    event.target.reset();
   };
 
   return (
-    <section>
-      <div className={styles.requestPhotos}>
+    <section className={styles.requestPhotos}>
+      <div className={`${styles.title} col-10 offset-1 col-md-6 offset-md-3`}>
         <p>Закажите фотографии своего ребенка с соревнований</p>
         <p>заполните форму ниже, не забудьте прикрепить фотографию купальника</p>
       </div>
@@ -54,52 +61,48 @@ const RequestPhoto = () => {
         <div className="row">
           <div className="col-12 col-md-8 offset-md-2">
             <div className={styles.formWrapper}>
-              <form onSubmit={checker} className="d-flex flex-column">
+              <form onSubmit={handleSubmit} className="d-flex flex-column">
                 <input
-                  value={inputState.name}
-                  onChange={handleInputChange}
-                  name="name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   type="text"
                   placeholder="Имя и фамилия *"
+                  maxLength={20}
                   required
                 />
                 <input
-                  value={inputState.date}
-                  onChange={handleInputChange}
-                  name="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   type="text"
                   placeholder="Число, время и поток (по протоколам) *"
+                  maxLength={50}
                   required
                 />
                 <input
-                  value={inputState.city}
-                  onChange={handleInputChange}
-                  name="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                   type="text"
                   placeholder="Город *"
+                  maxLength={20}
                   required
                 />
-                <input
-                  value={inputState.birth}
-                  onChange={handleInputChange}
-                  name="birth"
+                <InputMask
+                  value={birth}
+                  onChange={(e) => setBirth(e.target.value)}
+                  mask="9999"
                   type="text"
                   placeholder="Год рождения *"
                   required
                 />
                 <input
-                  value={inputState.tournament}
-                  onChange={handleInputChange}
-                  name="tournament"
+                  value={tournament}
+                  onChange={(e) => setTournament(e.target.value)}
                   type="text"
                   placeholder="Название турнира *"
+                  maxLength={50}
                   required
                 />
-                <select
-                  value={inputState.category}
-                  onChange={handleInputChange}
-                  name="category"
-                  required>
+                <select value={category} onChange={(e) => setCategory(e.target.value)} required>
                   <option value="" disabled>
                     Категория *
                   </option>
@@ -113,27 +116,27 @@ const RequestPhoto = () => {
                   <option value="ОФП">ОФП</option>
                 </select>
                 <input
-                  value={inputState.email}
-                  onChange={handleInputChange}
-                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   placeholder="Ваш email *"
+                  maxLength={30}
                   required
                 />
-                <input
-                  value={inputState.phone}
-                  onChange={handleInputChange}
-                  name="phone"
+                <InputMask
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  mask="+7 (999) 999 99 99"
                   type="tel"
                   placeholder="Номер телефона для связи *"
                   required
                 />
-                <input
-                  value={inputState.comment}
-                  onChange={handleInputChange}
-                  name="comment"
-                  type="text"
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  rows={4}
                   placeholder="Комментарий"
+                  maxLength={200}
                 />
                 <hr />
                 <label className="text-danger" htmlFor="file-input">
@@ -141,7 +144,7 @@ const RequestPhoto = () => {
                 </label>
                 <input
                   value={undefined}
-                  onChange={handleInputChange}
+                  onChange={() => {}}
                   id="file-input"
                   name="photo"
                   type="file"
@@ -149,7 +152,9 @@ const RequestPhoto = () => {
                   placeholder="hello"
                   required
                 />
-                <button className="btn btn-outline-success">Заказать</button>
+                <button disabled={btnLoading && true} className="btn btn-outline-success">
+                  {btnLoading ? 'Отправляем...' : 'Заказать'}
+                </button>
               </form>
             </div>
           </div>
