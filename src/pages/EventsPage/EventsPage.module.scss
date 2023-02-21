@@ -1,8 +1,21 @@
 .events {
   margin: 75px 0;
   color: #FFFFFF;
+  height: 50vh;
 
   h2 {
     margin: 60px 0;
+  }
+
+  table {
+    th {
+      padding: 10px;
+      border: 1px solid #FFFFFF;
+      background-color: #656773;
+    }
+    td {
+      padding: 20px 10px;
+      border: 1px solid #FFFFFF;
+    }
   }
 }
