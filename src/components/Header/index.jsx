@@ -21,7 +21,7 @@ const Header = () => {
                 <div className={styles.phone}>
                   <a href="tel:79258371194">+7 (925) 837 11 94</a>
                   <a
-                    style={{ fontSize: '20px', color: '#008069' }}
+                    style={{ fontSize: '20px', color: '#0DCAF0' }}
                     href="https://wa.me/79258371194"
                     target="_blank"
                     rel="noreferrer">
