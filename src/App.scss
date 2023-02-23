@@ -1,8 +1,16 @@
+body {
+  background-color: #15181a;
+}
 .App {
   text-align: center;
   background-color: #15181a;
-
+  min-height: 100vh;
   font-family: 'Roboto', sans-serif;
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
 }
 
 .nav-link {
