@@ -1,23 +1,8 @@
 import axios from 'axios';
 
-const SendEmail = async ({
-  fullName,
-  date,
-  city,
-  birth,
-  tournament,
-  category,
-  email,
-  phone,
-  comment,
-  setSend,
-}) => {
+const SendEmail = async (formData) => {
   try {
-    const datas = { fullName, date, city, birth, tournament, category, email, phone, comment };
-    let res = await axios.post(`http://localhost:5000/send`, datas);
-    if (res) {
-      setSend(res.data);
-    }
+    await axios.post(`http://localhost:5000/send`, formData);
   } catch (error) {
     alert(error.response.data.message);
   }
