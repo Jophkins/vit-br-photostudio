@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+const axiosInstance = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 const SendEmail = async (formData) => {
   try {
-    await axios.post(`http://localhost:5000/send`, formData);
+    await axiosInstance.post(`/send`, formData);
   } catch (error) {
     alert(error.response.data.message);
   }
