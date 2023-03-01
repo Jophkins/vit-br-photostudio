@@ -22,11 +22,6 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/events">
-                События
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/request">
                 Заказ фото
               </Link>
@@ -36,6 +31,11 @@ const Navbar = () => {
                 Портфолио
               </Link>
             </li>
+            {/*<li className="nav-item">*/}
+            {/*  <Link className="nav-link" to="/events">*/}
+            {/*    Фотоотчёты с мероприятий*/}
+            {/*  </Link>*/}
+            {/*</li>*/}
             <li className="nav-item">
               <Link className="nav-link" to="/contacts">
                 Контакты

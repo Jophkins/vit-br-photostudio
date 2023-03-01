@@ -7,6 +7,7 @@ import NotFoundPage from '../../pages/NotFoundPage';
 import PortfolioPage from '../../pages/PortfolioPage';
 import ContactsPage from '../../pages/ContactsPage';
 import RequestPhoto from '../../pages/RequestPhoto';
+import Event from '../Event';
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
       <Route path="/portfolio" element={<PortfolioPage />} />
       <Route path="/contacts" element={<ContactsPage />} />
       <Route path="/photos" element={<PhotosPage />} />
+      <Route path="/events/:id" element={<Event />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

@@ -69,9 +69,7 @@ const PhotosPage = () => {
     <section className={styles.photosPage}>
       <div className="container">
         <div className="wrapper">
-          <h2>
-            Для получения фото введите ваши инициалы "Фамилия И.О." и нажмите кнопку загрузить
-          </h2>
+          <h2>Для получения фото введите Вашу фамилию и имя, и нажмите кнопку загрузить</h2>
           <div className="row justify-content-md-center">
             <div className="col-12 col-md-8 mt-4">
               <form
@@ -86,7 +84,7 @@ const PhotosPage = () => {
                   type="search"
                   aria-label="Search"
                   disabled={isLoading}
-                  placeholders={['Иванова Ю.Г.', 'Лебедева А.Р.', 'Антонова С.Н.']}
+                  placeholders={['Иванова Юлия', 'Лебедева Анна', 'Антонова Светлана']}
                   maxLength="30"
                 />
                 <button
