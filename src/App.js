@@ -10,11 +10,49 @@ import Navbar from './components/Navbar';
 import React from 'react';
 import Footer from './components/Footer';
 import { BarLoader } from 'react-spinners';
+import axios from 'axios';
+
+export const MyContext = React.createContext();
 
 function App() {
-  const [isLoad, setIsLoading] = React.useState(true);
+  const [isLoad, setIsLoading] = React.useState(false);
+  const [yandexDiskData, setYandexDiskData] = React.useState({
+    portfolioPhotos: [],
+    eventsData: [],
+  });
+
   React.useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2000);
+    setIsLoading(true);
+    axios
+      .all([
+        axios.get('https://cloud-api.yandex.net/v1/disk/public/resources', {
+          params: {
+            public_key: process.env.REACT_APP_PORTFOLIO_PUBLIC_KEY,
+            preview_size: 'L',
+          },
+        }),
+        axios.get('https://cloud-api.yandex.net/v1/disk/public/resources', {
+          params: {
+            public_key: process.env.REACT_APP_EVENTS_PUBLIC_KEY,
+            limit: 50,
+          },
+        }),
+      ])
+      .then(
+        axios.spread((obj1, obj2) => {
+          setYandexDiskData((prevState) => {
+            return {
+              ...prevState,
+              portfolioPhotos: obj1.data._embedded.items,
+              eventsData: obj2.data._embedded.items,
+            };
+          });
+          // fetchData(obj2.data.file);
+        }),
+      )
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
   return (
     <>
@@ -35,7 +73,9 @@ function App() {
         <BrowserRouter>
           <Navbar />
 
-          <AppRouter />
+          <MyContext.Provider value={yandexDiskData}>
+            <AppRouter />
+          </MyContext.Provider>
 
           <Footer />
         </BrowserRouter>

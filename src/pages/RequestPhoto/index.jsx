@@ -112,14 +112,13 @@ const RequestPhoto = () => {
                       <option value="" disabled>
                         Категория *
                       </option>
-                      <option value="БП">БП</option>
-                      <option value="Обруч">Обруч</option>
-                      <option value="Скакалка">Скакалка</option>
-                      <option value="Булавы">Булавы</option>
-                      <option value="Мяч">Мяч</option>
-                      <option value="Лента">Лента</option>
-                      <option value="Награждение">Награждение</option>
                       <option value="ОФП">ОФП</option>
+                      <option value="БП">БП</option>
+                      <option value="Скакалка">Скакалка</option>
+                      <option value="Обруч">Обруч</option>
+                      <option value="Мяч">Мяч</option>
+                      <option value="Булавы">Булавы</option>
+                      <option value="Лента">Лента</option>
                     </select>
                     <input
                       value={email}
@@ -160,6 +159,9 @@ const RequestPhoto = () => {
                     <button disabled={btnLoading && true} className="btn btn-outline-success">
                       {btnLoading ? 'Отправляем...' : 'Заказать'}
                     </button>
+                    <p>
+                      Нажимая кнопку "заказать" вы соглашаетесь на обработку введенных вами данных
+                    </p>
                   </form>
                 </div>
               </div>
