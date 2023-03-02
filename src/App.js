@@ -22,6 +22,7 @@ function App() {
     eventsPreviews: [],
   });
 
+  //effs
   React.useEffect(() => {
     setIsLoading(true);
     axios
