@@ -41,13 +41,22 @@ function App() {
       ])
       .then(
         axios.spread((obj1, obj2) => {
-          setYandexDiskData((prevState) => {
-            return {
-              ...prevState,
-              portfolioPhotos: obj1.data._embedded.items,
-              eventsData: obj2.data._embedded.items,
-            };
-          });
+          if (obj1) {
+            setYandexDiskData((prevState) => {
+              return {
+                ...prevState,
+                portfolioPhotos: obj1.data._embedded.items,
+              };
+            });
+          }
+          if (obj2) {
+            setYandexDiskData((prevState) => {
+              return {
+                ...prevState,
+                eventsData: obj2.data._embedded.items,
+              };
+            });
+          }
           obj2.data._embedded.items.forEach((item) => {
             axios
               .get('https://cloud-api.yandex.net/v1/disk/public/resources', {
