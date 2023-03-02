@@ -58,28 +58,30 @@ function App() {
               };
             });
           }
-          obj2.data._embedded.items.forEach((item) => {
-            axios
-              .get('https://cloud-api.yandex.net/v1/disk/public/resources', {
-                params: {
-                  public_key: process.env.REACT_APP_EVENTS_PUBLIC_KEY,
-                  path: item.path,
-                  preview_size: 'L',
-                  limit: 1,
-                },
-              })
-              .then((response) => {
-                setYandexDiskData((prevState) => {
-                  return {
-                    ...prevState,
-                    eventsPreviews: [
-                      ...prevState.eventsPreviews,
-                      response.data._embedded.items[0].preview,
-                    ],
-                  };
+          if (obj2) {
+            obj2.data._embedded.items.forEach((item) => {
+              axios
+                .get('https://cloud-api.yandex.net/v1/disk/public/resources', {
+                  params: {
+                    public_key: process.env.REACT_APP_EVENTS_PUBLIC_KEY,
+                    path: item.path,
+                    preview_size: 'L',
+                    limit: 1,
+                  },
+                })
+                .then((response) => {
+                  setYandexDiskData((prevState) => {
+                    return {
+                      ...prevState,
+                      eventsPreviews: [
+                        ...prevState.eventsPreviews,
+                        response.data._embedded.items[0].preview,
+                      ],
+                    };
+                  });
                 });
-              });
-          });
+            });
+          }
         }),
       )
       .finally(() => {
