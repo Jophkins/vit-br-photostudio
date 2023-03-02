@@ -31,11 +31,11 @@ const Navbar = () => {
                 Портфолио
               </Link>
             </li>
-            {/*<li className="nav-item">*/}
-            {/*  <Link className="nav-link" to="/events">*/}
-            {/*    Фотоотчёты с мероприятий*/}
-            {/*  </Link>*/}
-            {/*</li>*/}
+            <li className="nav-item">
+              <Link className="nav-link" to="/events">
+                Фотоотчёты с мероприятий
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/contacts">
                 Контакты
