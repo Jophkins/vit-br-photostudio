@@ -9,7 +9,21 @@
 
   .eventItem {
     margin: 20px 0;
-    height: 300px;
-    border: 2px solid blue;
+    opacity: 1;
+    a {
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+    img {
+      border: 2px solid #FFFFFF;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+  }
+
+  .eventItem:hover {
+    opacity: .6;
   }
 }
